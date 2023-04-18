@@ -1,0 +1,569 @@
+openapi: 3.0.0
+info:
+  title: Textmining-Underlined
+  version: 1.0.0
+  description: |
+    The Underlined Text Mining API provides natural language processing for plain text of customer feedback and contact channels.
+    
+    - **Sandbox:** Full-fledged capabilities.
+
+    - **Security:**  HTTPS, OAuth, Rate limit.
+
+    - **Versioning:**  Supports version-less API, version tight. If no version is provided (in header) it defaults to latest version. 
+    
+    ---
+    
+    <h3>Free/common API keys for testing the API in the sandbox</h3>
+    
+     You can use the following ApiKeys for free models or branches. These might not have the best quality results for the text classifications.
+     - Banking: `rYLVYhzp3ljvDvTr4wXtujH874kvOoTDyBYxdUPCYvKsFMeXyVrZeGAHRMXe7DaPRg7CWgOjgUV9ZY3vaM7364isAQfR6vFUU4aiPcARHI2KvBr2SmEuGhSW8OBFA7n`
+     - Insurance: `EVHvPzpnhItFejd421L4FK5G8xltAW51ZcU0QGjp1VzMYCIcRbNRtbQ4ZBwcN6nKN1qCPmnwRgDuVsr5oIbjJoH8LZaPUHb4ro9hWFNoxa9NXgjqT0xEeEAjts1zMYc`
+     
+     **Note:** The above mentioned API keys are only applicable for demo users! 
+     
+     <h3>Production</h3> 
+     
+     To see higher quality text mining results, you can choose to become a production customer. As a production customer you can provide your own dataset, which will be used for textmining under a specific branch(es). Also, you can request the `API key` for a branch from Underlined using the `/api/key/request` API resource below. More details can be found in the technical documentation.
+
+    ---
+    [KPN Developer](https://developer.kpn.com/)<br/>
+    [Getting Started](https://developer.kpn.com/getting-started) <br/>
+    ---
+  contact:
+    name: API Support
+    email: api_developer@kpn.com
+    url: 'https://developer.kpn.com/support'
+  termsOfService: 'https://developer.kpn.com/legal'
+servers:
+- url: https://api-prd.kpn.com/data/underlined
+  description: Base URL
+  variables: {}
+externalDocs:
+  description: Response headers
+  url: https://developer.kpn.com/documentation-response-headers
+paths:
+  /api/textmining/classification:
+    post:
+      tags:
+      - Textmining
+      security:
+        - oauth2: []
+      summary: Single text classification
+      description: |
+          This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:
+          
+          * Customer Feedback (CX) data.
+          * Customer Contact (CC) data.
+
+      operationId: TextMinning-SingleClassification
+      parameters: 
+        - in: header
+          name: api-version
+          description: If left blank, the latest version will be invoked. 
+          schema:
+            type: string
+            default: ""
+          required: false
+      requestBody:
+        description: | 
+            The following list shows all properties that are required in the request body:
+             - Id
+             - ApiKey
+             - Type
+             - IncludeTextsInResult
+             - Language
+             - TextInput
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextMinning-SingleClassificationRequest'
+            example:
+              Id: "1"
+              ApiKey: 8hjguyjgfyuvv76567t8tgiugbuftyfytfvjhvcfnjrIww
+              Type: CC - Logging
+              IncludeTextsInResult: false
+              Language: NL
+              TextInput:
+              - Id: "2"
+                Text: Klant wil graag zijn adres wijzigen. Hij is vorige week verhuisd.
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ResponseTMSingleClassification'
+        400:
+          $ref: '#/components/responses/bad_request'
+        401:
+          $ref: '#/components/responses/unauthorized'
+        403:
+          $ref: '#/components/responses/forbidden'
+        404:
+          $ref: '#/components/responses/not_found'
+        429:
+          $ref: '#/components/responses/too_many'
+        500:
+          $ref: '#/components/responses/server_error'
+        503:
+          $ref: '#/components/responses/service_unavailable'
+          
+  /api/textmining/multi-classification:
+    post:
+      tags:
+      - Textmining
+      security:
+        - oauth2: []
+      summary: Multi text classification
+      description: | 
+          This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:
+          
+          * Customer Feedback (CX) data.
+          * Customer Contact (CC) data.
+          
+      operationId: TextMinning-Multiclassification
+      parameters: 
+        - in: header
+          name: api-version
+          description: if left blank, the latest version will be invoked 
+          schema:
+            type: string
+            default: ""
+      requestBody:
+        description: | 
+            The following list shows all properties that are required in the request body:
+             - Id
+             - ApiKey
+             - Channel
+             - Type
+             - IncludeTextsInResult
+             - Language
+             - TextInput
+ 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextMinning-MulticlassificationRequest'
+            example:
+              Id: "1"
+              ApiKey: 8hjguyjgfyuvv76567t8tgiugbuftyfytfvjhvcfnjrIww
+              Channel: RemoteHelpdesk
+              Type: CX - tNPS
+              IncludeTextsInResult: false
+              Language: NL
+              TextInput:
+              - id: "2"
+                text: 'Geen idee...De prijs was erg hoog. Het personeel was zeer vriendelijk. Verder was het wel prima.'
+              - id: "3"
+                text: 'De prijs was erg hoog.'
+        required: true
+      responses:
+        200:
+          $ref: '#/components/responses/ResponseTMMultiClassification'
+        400:
+          $ref: '#/components/responses/bad_request'
+        401:
+          $ref: '#/components/responses/unauthorized'
+        403:
+          $ref: '#/components/responses/forbidden'
+        404:
+          $ref: '#/components/responses/not_found'
+        429:
+          $ref: '#/components/responses/too_many'
+        500:
+          $ref: '#/components/responses/server_error'
+        503:
+          $ref: '#/components/responses/service_unavailable'
+
+  /api/key/request:
+    post:
+      tags:
+      - Key
+      security:
+        - oauth2: []
+      summary: Only for production users. Request the ApiKey for a certain branch
+      description: Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers.
+      operationId: RequestApiKey
+      parameters: 
+        - in: header
+          name: api-version
+          description: If left blank, the latest version will be invoked 
+          schema:
+            type: string
+            default: ""
+      requestBody:
+        description: 'Send a message to request the ApiKey for a branch. This is only applicable if you are a verified/production customer. Otherwise, as a demo customer you can use the common set of keys specified in the technical documentation.'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestBranchKey'
+        required: true
+      responses:
+        200:
+          $ref: '#/components/responses/success_response'
+        400:
+          $ref: '#/components/responses/bad_request'
+        401:
+          $ref: '#/components/responses/unauthorized'
+        403:
+          $ref: '#/components/responses/forbidden'
+        404:
+          $ref: '#/components/responses/not_found'
+        429:
+          $ref: '#/components/responses/too_many'
+        500:
+          $ref: '#/components/responses/server_error'
+        503:
+          $ref: '#/components/responses/service_unavailable'
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials
+          scopes: {}
+  schemas:
+
+    TextMinning-SingleClassificationRequest:
+      title: TextMinning-SingleClassificationRequest
+      required:
+      - Id
+      - ApiKey - The API key for the requested model or branch
+      - Type
+      - IncludeTextsInResult
+      - Language
+      - TextInput
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The `Id` of the text. This is the same as given the `Id` from the input.
+        ApiKey:
+          type: string
+          description: The `Apikey` for the requested model or branch. KPN sandbox customers can use common keys free models/branches. These might not have the best quality results for the text classifications.
+        Type:
+          type: string
+          description: | 
+            The type of texts in this call. There are two main categories with sub categories: customer contact data (CC) and customer experience data (CX). Both of these categories have a few subcategories:    </br> - CC - Areas  </br> - CC - Life events  </br> - CC - Logging  </br> - CC - Sales </br> - CX - CES </br>- CX - CSAT </br> -  CX - Emotion </br> - CX - Employee </br> - CX - FTF </br>  - CX - Suggestion </br> - CX - tNPS </br> - CX - rNPS
+        IncludeTextsInResult:
+          type: boolean
+          description: Indication whether the given text property must be added to in the output. If the value is **true** then the original texts are returned. Otherwise the text property is not included in the output.
+        Language:
+          type: string
+          description: | 
+              Optional parameter in which the language is given. If this parameter is not in the input or `null` then the language is retrieved from the license information. Languages are accepted in two letter codes. For example: `NL` for Dutch, `EN` for English.
+        TextInput:
+          type: array
+          description: |
+            A list of objects. Each object contains two properties: a unique `Id` and the `Text`. For each entry in this list, the API will try to find the topic and subtopic of the text. Please note that it is not allowed for the texts to be `null` or an empty string!
+          items:
+            $ref: '#/components/schemas/TextInput'
+      example:
+        Id: 1
+        ApiKey: 8hjguyjgfyuvv76567t8tgiugbuftyfytfvjhvcfnjrIww
+        Type: CC - Logging
+        IncludeTextsInResult: false
+        Language: NL
+        TextInput:
+        - Id: 1
+          Text: Klant wil graag zijn adres wijzigen. Hij is vorige week verhuisd.
+    TextInput:
+      title: TextInput
+      required:
+      - Id
+      - Text
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The `Id` of the text. This is the same as given the `Id` from the input.
+        Text:
+          type: string
+          description: The text from the input, only if the input property `IncludeTextsInResult` is `true`. Otherwise, the value is always `null`.
+      example:
+        Id: 1
+        Text: Klant wil graag zijn adres wijzigen. Hij is vorige week verhuisd.
+    TextMinning-MulticlassificationRequest:
+      title: TextMinning-MulticlassificationRequest
+      required:
+      - Id
+      - ApiKey
+      - Channel
+      - Type
+      - IncludeTextsInResult
+      - Language
+      - TextInput
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The `Id` of the text. This is the same as given the `Id` from the input.
+        ApiKey:
+          type: string
+          description: The `Apikey` for the requested model or branch. KPN sandbox customers can use common keys free models/branches. These might not have the best quality results for the text classifications.
+        Channel:
+          type: string
+          description: | 
+              The channel used during the request. In case of customer feedback, the channel represents the channel of the contact over which the feedback is asked. The possible values for this property may differ per company. Please check the `functional documentation` to see which channels are available. Please note that the values are case independent. The default value for this property is `RemoteHelpdesk`.
+        Type:
+          type: string
+          description: | 
+            The type of texts in this call. There are two main categories with sub categories: customer contact data (CC) and customer experience data (CX). Both of these categories have a few subcategories:    </br> - CC - Areas  </br> - CC - Life events  </br> - CC - Logging  </br> - CC - Sales </br> - CX - CES </br>- CX - CSAT </br> -  CX - Emotion </br> - CX - Employee </br> - CX - FTF </br>  - CX - Suggestion </br> - CX - tNPS </br> - CX - rNPS
+        IncludeTextsInResult:
+          type: boolean
+          description: Indication whether the given text property must be added to in the output. If the value is **true** then the original texts are returned. Otherwise the text property is not included in the output.
+        Language:
+          type: string
+          description: | 
+              Optional parameter in which the language is given. If this parameter is not in the input or `null` then the language is retrieved from the license information. Languages are accepted in two letter codes. For example: `NL` for Dutch, `EN` for English.
+        TextInput:
+          type: array
+          description: | 
+            A list of objects. Each object contains two properties: a unique `Id` and the `Text`. For each entry in this list, the API will try to find the topic and subtopic of the text. Please note that it is not allowed for the texts to be `null` or an empty string!
+          items:
+            $ref: '#/components/schemas/TextInput1'
+      example:
+        Id: "1"
+        ApiKey: 8hjguyjgfyuvv76567t8tgiugbuftyfytfvjhvcfnjrIww
+        Channel: RemoteHelpdesk
+        Type: CX - tNPS
+        IncludeTextsInResult: false
+        Language: NL
+        TextInput:
+        - id: "2"
+          text: 'Geen idee...De prijs was erg hoog. Het personeel was zeer vriendelijk. Verder was het wel prima. '
+        - id: "3"
+          text: "De prijs was erg hoog."
+    TextInput1:
+      title: TextInput1
+      required:
+      - id
+      - text
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The `Id` of the text. This is the same as given the `Id` from the input.
+        text:
+          type: string
+          description: The text from the input, only if the input property `IncludeTextsInResult` is `true`. 
+      example:
+        id: 0
+        text: 'Geen idee...De prijs was erg hoog. Het personeel was zeer vriendelijk. Verder was het wel prima. '
+ 
+    RequestBranchKey:
+          title: Request Branch Key
+          type: object
+          properties:
+            message:
+              type: string
+              description: The message to request the Apikey for the branch.
+          example:
+            message: Please send me the ApiKey for the banking domain.
+    ResultTMSingleClassification:
+          title: ResultTMSingleClassification
+          type: object
+          properties:
+            id:
+              type: string
+              description: The `Id` of the text. This is the same as given the `Id` from the input.
+            text:
+              type: string
+              description: The text from the input, only if the input property IncludeTextsInResult is `true`. Otherwise, the value is always `null`.
+            topic:
+              type: string
+              description: | 
+                The best matching topic found in the given text. If no topic is found, the value is set to `No topic found`. If the text was marked as invalid or as "No opinion" then the value is set to `null`.
+            subtopic:
+              type: string
+              description: | 
+                  The best matching subtopic found in the given text. If no topic is found, the value is set to `No subtopic found`. If the text was marked as invalid or as `No opinion` then the value is set to `null`.
+          example:
+            id: "2"
+            text: null
+            topic: Houding & Gedrag medewerker
+            subtopic: Vriendelijkheid
+
+    ResultTMMultiClassification:
+          title: ResultTMMultiClassification
+          type: object
+          properties:
+            id:
+              type: string
+              description: The `Id` of the text. This is the same as given the `Id` from the input.
+            text:
+              type: string
+            topics:
+              type: object
+              description: |
+                The value of this property is an object containing zero or more keys. Each key is a unique topic found for the corresponding text. The value for each topic is an array of strings. Each value in this array is a subtopic of the corresponding topic. Note that each topic must have one or more subtopics.
+              properties:
+                Houding & Gedrag medewerker:
+                  type: object
+                Prijs & Kwaliteit:
+                  type: object
+          example:
+            - id: '2'
+              text: null
+              topics: '{Houding & Gedrag medewerker:[Vriendelijkheid],Prijs & Kwaliteit:[Prijs & Kosten]}'
+            - id: '3'
+              text: null
+              topics: '{Prijs & Kwaliteit:[Prijs & Kosten]}'
+
+    error:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction ID of the the request.
+          title: Transaction ID
+        status:
+          type: string
+          description: Status
+          title: Status
+        name:
+          type: string
+          description: Error name
+          title: Error name
+        message:
+          type: string
+          description: Error message
+          title: Error message
+        info:
+          type: string
+          description: Additional information about error.
+          title: Info  
+
+    ResTMSingleClassification:
+      title: ResTMSingleClassification
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the text. This is the same as given the `Id` from the input.
+        success:
+          type: boolean
+        errorMessage:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultTMSingleClassification'
+          description: ''
+
+    ResTMMultiClassification:
+      title: ResTMMultiClassification
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the text. This is the same as given the `Id` from the input.
+        success:
+          type: boolean
+        errorMessage:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultTMMultiClassification'
+          description: ''
+  
+    SuccessSchema:
+      title: Success Schema
+      type: object
+      properties:
+        success:
+          type: boolean
+      example:
+        success: "true"
+        description: 
+
+
+  responses:
+    ResponseTMSingleClassification:
+        description: | 
+            The result is a list of objects. Each object is similar to the objects in the `TextInput` property in the input. Both the `Id` property and the `Text` property are returned. If the property `IncludeTextsInResult` is true, the text is returned. Otherwise, the text properties will have the value `null`. Two properties are added, compared to the input, to each entry in this list.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResTMSingleClassification'
+    ResponseTMMultiClassification:
+        description: | 
+            The result is a list of objects. Each object is similar to the objects in the `TextInput` property in the input. Both the `Id` property and the `Text` property are returned. If the property `IncludeTextsInResult` is true, the text is returned. Otherwise, the text properties will have the value `null`. Two properties are added, compared to the input, to each entry in this list.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResTMMultiClassification'
+    
+    success_response:
+      description: success response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SuccessSchema'
+        
+    bad_request:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+            
+    found:
+      description: Found
+      # headers:
+      #   Location:
+      #     description: Location information
+      #     schema:
+      #       type: string
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: '#/components/schemas/error'
+    unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    not_found:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    too_many:
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    server_error:
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    service_unavailable:
+      description: Service unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    empty_file:
+      description: Uploaded file has size 0
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    precondition_required:
+      description: Precondition required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'

@@ -1,0 +1,1600 @@
+{
+	"info": {
+		"_postman_id": "c7dfc086-4f3a-4bb7-ba80-50c6c827b412",
+		"name": "Textmining-Underlined",
+		"description": "The Underlined Text Mining API provides natural language processing for plain text of customer feedback and contact channels.\n\n- **Sandbox:** Full-fledged capabilities.\n\n- **Security:**  HTTPS, OAuth, Rate limit.\n\n- **Versioning:**  Supports version-less API, version tight. If no version is provided (in header) it defaults to latest version. \n\n---\n\n<h3>Free/common API keys for testing the API in the sandbox</h3>\n\n You can use the following ApiKeys for free models or branches. These might not have the best quality results for the text classifications.\n - Banking: `rYLVYhzp3ljvDvTr4wXtujH874kvOoTDyBYxdUPCYvKsFMeXyVrZeGAHRMXe7DaPRg7CWgOjgUV9ZY3vaM7364isAQfR6vFUU4aiPcARHI2KvBr2SmEuGhSW8OBFA7n`\n - Insurance: `EVHvPzpnhItFejd421L4FK5G8xltAW51ZcU0QGjp1VzMYCIcRbNRtbQ4ZBwcN6nKN1qCPmnwRgDuVsr5oIbjJoH8LZaPUHb4ro9hWFNoxa9NXgjqT0xEeEAjts1zMYc`\n \n **Note:** The above mentioned API keys are only applicable for demo users! \n \n <h3>Production</h3> \n \n To see higher quality text mining results, you can choose to become a production customer. As a production customer you can provide your own dataset, which will be used for textmining under a specific branch(es). Also, you can request the `API key` for a branch from Underlined using the `/api/key/request` API resource below. More details can be found in the technical documentation.\n\n---\n[KPN Developer](https://developer.kpn.com/)<br/>\n[Getting Started](https://developer.kpn.com/getting-started) <br/>\n---\n\n\nContact Support:\n Name: API Support\n Email: api_developer@kpn.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "4406147-c7dfc086-4f3a-4bb7-ba80-50c6c827b412"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "textmining",
+					"item": [
+						{
+							"name": "multi-classification",
+							"item": [
+								{
+									"name": "Multi text classification",
+									"id": "48e14103-ddc3-4594-8a57-0f3992bcff9a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "if left blank, the latest version will be invoked",
+												"key": "api-version",
+												"value": ""
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/textmining/multi-classification",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"textmining",
+												"multi-classification"
+											]
+										},
+										"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+									},
+									"response": [
+										{
+											"id": "e89260ed-6219-430a-8584-f377e83c27c7",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\",\n  \"errorMessage\": \"<string>\",\n  \"result\": [\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"topics\": {\n        \"Houding & Gedrag medewerker\": {},\n        \"Prijs & Kwaliteit\": {}\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"topics\": {\n        \"Houding & Gedrag medewerker\": {},\n        \"Prijs & Kwaliteit\": {}\n      }\n    }\n  ]\n}"
+										},
+										{
+											"id": "25247369-db82-43dd-9126-ec8857c807bf",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "5380a054-f9ae-47ab-91a6-64a38f5803ae",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "fee8fc64-3eda-4bd4-bcb9-d3031ccfdb03",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "a4dd6ec7-2a5b-4056-8e3c-acf974e2f88f",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "12b0ceb4-c293-49c6-a866-a75a81dc8f51",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "75efcf0e-8ade-40ae-a596-bd500ad47900",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "d98b888e-085b-4c49-b13c-6fdf8658b7db",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "if left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"ApiKey\": \"<string>\",\n  \"Channel\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"Id\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/multi-classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"multi-classification"
+													]
+												},
+												"description": "This endpoint returns multiple topics and multiple sub-topics per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										}
+									]
+								}
+							],
+							"id": "a2e61fb7-e816-423c-a470-124f3ef35420"
+						},
+						{
+							"name": "classification",
+							"item": [
+								{
+									"name": "Single text classification",
+									"id": "592349dc-d6aa-485c-a26d-e65a15209e43",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "If left blank, the latest version will be invoked.",
+												"key": "api-version",
+												"value": ""
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/textmining/classification",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"textmining",
+												"classification"
+											]
+										},
+										"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+									},
+									"response": [
+										{
+											"id": "f8c96f97-cd2c-4a44-bda5-6b3dd8f8bc05",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\",\n  \"errorMessage\": \"<string>\",\n  \"result\": [\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"topic\": \"<string>\",\n      \"subtopic\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"topic\": \"<string>\",\n      \"subtopic\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "f318014c-0d93-4b50-bf8b-666dd425e356",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "95d1468c-b44a-486a-8b1e-5ea8c44099ee",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "e560c6fd-7c6b-4c1c-9e48-79007c2e783a",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "0978e8be-4b01-47ec-89fb-b35cbd21ff8c",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "11c099ae-6df2-4986-8497-fec32ee4fbbe",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "e9892f82-6dbf-461e-9b25-2a4c9f5f764f",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "de65485e-863b-47fe-ade0-42be7b4bcb0a",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked.",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"Id\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IncludeTextsInResult\": \"<boolean>\",\n  \"Language\": \"<string>\",\n  \"TextInput\": [\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Text\": \"<string>\"\n    }\n  ],\n  \"ApiKey\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/textmining/classification",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"textmining",
+														"classification"
+													]
+												},
+												"description": "This endpoint returns one topic and one sub topic per text sent to the API. You can send more than one text of the following text type:\n\n* Customer Feedback (CX) data.\n* Customer Contact (CC) data.\n"
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										}
+									]
+								}
+							],
+							"id": "6bf70f24-c455-4fdf-8885-123f8dbcfaaf"
+						}
+					],
+					"id": "4e1f2ace-f860-4dbb-9e59-26c0af0c06ea"
+				},
+				{
+					"name": "key",
+					"item": [
+						{
+							"name": "request",
+							"item": [
+								{
+									"name": "Only for production users. Request the ApiKey for a certain branch",
+									"id": "e014b857-b252-49c6-af1c-139fcbb74ffc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "If left blank, the latest version will be invoked",
+												"key": "api-version",
+												"value": ""
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"message\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/key/request",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"key",
+												"request"
+											]
+										},
+										"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+									},
+									"response": [
+										{
+											"id": "16c8562f-0f7f-4315-ab0b-a39152386047",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\"\n}"
+										},
+										{
+											"id": "09188c68-8d43-4890-b4c2-0f5d419104bf",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "0b5e3b4d-8b82-4037-a28b-533ce9e27360",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "5c82583c-94a6-43c5-975d-a9946b08dfc6",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "1263dfec-dbe1-4941-9685-a7503dc3714e",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "a229de55-c093-4e88-a3e9-ea122d0f8791",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "4dba4fda-efe0-4ecf-af63-187d7be1b01f",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										},
+										{
+											"id": "3823fe1a-2ce2-4144-a79e-2b3238984726",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "If left blank, the latest version will be invoked",
+														"key": "api-version",
+														"value": ""
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/key/request",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"key",
+														"request"
+													]
+												},
+												"description": "Use this endpoint to request an **ApiKey** for certain branch. Only applicable for verified/production customers."
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+										}
+									]
+								}
+							],
+							"id": "899285f9-8b19-4ca9-969d-fd4649a60d92"
+						}
+					],
+					"id": "9ffaa575-ba4a-4305-9d94-fdee79a5b517"
+				}
+			],
+			"id": "b55cb348-ed47-462c-aeb3-5a070f34d6fb"
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{client_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "access_token",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a770d566-bd60-46a8-9ab9-d7c6eedfd7a9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "33cb6cb6-b7f5-45de-9264-1c6ac7983de7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "947f88e0-fa1f-4120-8e90-5b405224e9cf",
+			"key": "baseUrl",
+			"value": "https://api-prd.kpn.com/data/underlined"
+		},
+		{
+			"id": "371ee2fe-3c7e-484c-8747-53df63a76e96",
+			"key": "client_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "30ec4298-6833-47f4-8c03-468e9220c52f",
+			"key": "client_secret",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
